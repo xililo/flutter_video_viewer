@@ -4,7 +4,7 @@ import 'package:video_player/video_player.dart';
 import 'package:helpers/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'package:video_viewer/ui/fullscreen.dart';
 import 'package:video_viewer/domain/entities/ads.dart';
@@ -190,7 +190,7 @@ class VideoViewerController extends ChangeNotifier with WidgetsBindingObserver {
       autoPlay: autoPlay,
     );
     log("VIDEO VIEWER INITIALIZED");
-    Wakelock.enable();
+    WakelockPlus.enable();
   }
 
   @override
@@ -202,7 +202,7 @@ class VideoViewerController extends ChangeNotifier with WidgetsBindingObserver {
     _video?.removeListener(_videoListener);
     _video?.pause();
     _video?.dispose();
-    Wakelock.disable();
+    WakelockPlus.disable();
     log("VIDEO VIEWER DISPOSED");
     super.dispose();
   }
